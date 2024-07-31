@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Timer from './Timer';
+import TimerForm from './TimerForm';
 import './App.css';
 
 function App() {
+  const [timers, setTimers] = useState([]);
+
+  const addTimer = (seconds) => {
+    const newTimer = {
+      id: Date.now(),
+      createdAt: new Date(),
+      remainingTime: seconds,
+    };
+    setTimers([...timers, newTimer]);
+  };
+
+  const removeTimer = (id) => {
+    setTimers(timers.filter(timer => timer.id !== id));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="left">
+        {timers.map(timer => (
+          <Timer key={timer.id} timer={timer} removeTimer={removeTimer} />
+        ))}
+      </div>
+      <div className="right">
+        <TimerForm addTimer={addTimer} />
+      </div>
     </div>
   );
 }
