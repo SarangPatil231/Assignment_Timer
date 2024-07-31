@@ -11,6 +11,7 @@ function TimerForm({ addTimer }) {
 
   return (
     <form onSubmit={handleSubmit}>
+        <h3>New Timer</h3>
       <input
         type="number"
         value={seconds}
