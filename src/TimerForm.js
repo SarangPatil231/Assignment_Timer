@@ -14,9 +14,10 @@ function TimerForm({ addTimer }) {
         <h3>New Timer</h3>
       <input
         type="number"
+        step= "0.01"
         value={seconds}
         onChange={(e) => setSeconds(e.target.value)}
-        placeholder="Enter seconds"
+        placeholder="Enter Seconds"
         required
       />
       <button type="submit">Add</button>
