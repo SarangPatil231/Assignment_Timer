@@ -16,9 +16,9 @@ function Timer({ timer, removeTimer }) {
 
   return (
     <div className="timer">
-      <div> {remainingTime.toFixed(2)}</div>
+      <div id='remainingTime'><b> {remainingTime.toFixed(2)}</b></div>
       <div > {timer.createdAt.toLocaleString()}</div>
-      <button onClick={() => removeTimer(timer.id)}>Delete</button>
+      <button id='btn-close' onClick={() => removeTimer(timer.id)}> &times; </button>
     </div>
   );
 }
